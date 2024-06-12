@@ -4,8 +4,8 @@ import type { ICategoryCollection } from '@/domain/ICategoryCollection';
 import { CategoryCollection } from '@/domain/CategoryCollection';
 import type { ProjectDetails } from '@/domain/Project/ProjectDetails';
 import { createEnumParser } from '../Common/Enum';
-import { parseCategory } from './CategoryParser';
-import { CategoryCollectionParseContext } from './Script/CategoryCollectionParseContext';
+import { parseCategory } from './Executable/CategoryParser';
+import { CategoryCollectionParseContext } from './Executable/Script/CategoryCollectionParseContext';
 import { ScriptingDefinitionParser } from './ScriptingDefinition/ScriptingDefinitionParser';
 
 export function parseCategoryCollection(

@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import type { IEntity } from '@/infrastructure/Entity/IEntity';
 import { parseCategoryCollection } from '@/application/Parser/CategoryCollectionParser';
-import { parseCategory } from '@/application/Parser/CategoryParser';
+import { parseCategory } from '@/application/Parser/Executable/CategoryParser';
 import { OperatingSystem } from '@/domain/OperatingSystem';
-import { RecommendationLevel } from '@/domain/RecommendationLevel';
+import { RecommendationLevel } from '@/domain/Executables/Script/RecommendationLevel';
 import { ScriptingDefinitionParser } from '@/application/Parser/ScriptingDefinition/ScriptingDefinitionParser';
 import { EnumParserStub } from '@tests/unit/shared/Stubs/EnumParserStub';
 import { ProjectDetailsStub } from '@tests/unit/shared/Stubs/ProjectDetailsStub';

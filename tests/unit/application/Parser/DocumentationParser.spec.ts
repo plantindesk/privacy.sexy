@@ -9,9 +9,9 @@ describe('DocumentationParser', () => {
       itEachAbsentStringValue((absentValue) => {
         // arrange
         const expectedError = 'missing documentation';
-        const node: DocumentableData = { docs: ['non empty doc 1', absentValue] };
+        const data: DocumentableData = { docs: ['non empty doc 1', absentValue] };
         // act
-        const act = () => parseDocs(node);
+        const act = () => parseDocs(data);
         // assert
         expect(act).to.throw(expectedError);
       }, { excludeNull: true, excludeUndefined: true });
@@ -20,20 +20,23 @@ describe('DocumentationParser', () => {
       // arrange
       const expectedTypeError = 'docs field (documentation) must be an array of strings';
       const wrongTypedValue = 22 as never;
-      const testCases: ReadonlyArray<{ name: string, node: DocumentableData }> = [
+      const testCases: ReadonlyArray<{
+        readonly name: string;
+        readonly data: DocumentableData;
+      }> = [
         {
           name: 'given docs',
-          node: { docs: wrongTypedValue },
+          data: { docs: wrongTypedValue },
         },
         {
           name: 'single doc',
-          node: { docs: ['non empty doc 1', wrongTypedValue] },
+          data: { docs: ['non empty doc 1', wrongTypedValue] },
         },
       ];
       for (const testCase of testCases) {
         it(testCase.name, () => {
           // act
-          const act = () => parseDocs(testCase.node);
+          const act = () => parseDocs(testCase.data);
           // assert
           expect(act).to.throw(expectedTypeError);
         });
