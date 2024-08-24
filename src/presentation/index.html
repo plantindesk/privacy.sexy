@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>privacy.sexy - Maximize Your Privacy and Security</title>
+  <meta
+    name="description"
+    content="
+      Discover privacy.sexy, the privacy tool to maximize your privacy and security on Windows, macOS, and Linux.
+      Easily use best practices to prevent tracking and make your life secure and private — because privacy is sexy.
+    "
+  />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#ffffff"/>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/favicon.ico">
+
+  <!--
+    Security meta tags based on OWASP recommendations.
+    See https://owasp.org/www-project-secure-headers/ci/headers_add.json for all recommended policies.
+    Exceptions:
+      - [+] `style-src 'unsafe-inline'`   : Required for Vue.
+      - [+] `img-src data:`               : Required for Ace (code editor) CSS.
+      - [+] `script-src: 'unsafe-inline'` : Required for Vite legacy (@vitejs/plugin-legacy) for production builds.
+      - [-] `upgrade-insecure-requests`   : Required for development on macOS Safari or Safari will block requests on `http://localhost`.
+  -->
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data:;
+      form-action 'self';
+      object-src 'none';
+      block-all-mixed-content;
+    "
+  >
+  <meta name="referrer" content="no-referrer">
+</head>
+
+<body>
+  <noscript>
+    <style>
+      #javascriptDisabled {
+        background: #eceef1;
+        margin: 5rem auto;
+        max-width: 800px;
+        padding: 3rem;
+        border: 1px solid#333a45;
+        font-size: 18px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+      }
+    </style>
+    <div id="javascriptDisabled">
+      <h1>Problem loading page</h1>
+      <p>
+        The page does not work without JavaScript enabled.
+        Please enable it to use privacy.sexy. 
+        Don't worry; privacy.sexy is secure, transparent, and open-source.
+      </p>
+    </div>
+  </noscript>
+  <div id="app"></div>
+  <script type="module" src="/main.ts"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
