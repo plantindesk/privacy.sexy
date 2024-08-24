@@ -1,5 +1,0 @@
-{
-  "electronUnbundled": "dist-electron-unbundled",
-  "electronBundled": "dist-electron-bundled",
-  "web": "dist-web"
-}
